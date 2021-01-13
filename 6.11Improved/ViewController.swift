@@ -57,7 +57,7 @@ class ViewController: UIViewController
 
             self.viewsArray.append(dummyView)
             superView.addSubview(dummyView)
-            addTapGesturesToAView(with: dummyView)
+            self.addTapGesturesToAView(with: dummyView)
 
             dummyView.isUserInteractionEnabled = true
             dummyView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +82,7 @@ class ViewController: UIViewController
 
             }
 
-            constraintsArray.append(contentsOf: [widthConst, leadingConst])
+            self.constraintsArray.append(contentsOf: [widthConst, leadingConst])
 
             NSLayoutConstraint.activate([widthConst, leadingConst])
 
@@ -122,7 +122,7 @@ class ViewController: UIViewController
         if let index: Int = getIndexOfViewTapped(sender: sender)
         {
             print("tapped at \(index)")
-            createAndAddNewSubView(at: index)
+            self.createAndAddNewSubView(at: index)
         }
 
 
@@ -138,7 +138,7 @@ class ViewController: UIViewController
         if let index: Int = getIndexOfViewTapped(sender: sender)
         {
             print("tapped at \(index)")
-            deleteSubView(at: index)
+            self.deleteSubView(at: index)
         }
 
 
@@ -169,7 +169,7 @@ class ViewController: UIViewController
         self.viewsArray.insert(newView, at: position + 1)
 
         self.centerView.addSubview(newView)
-        addTapGesturesToAView(with: newView)
+        self.addTapGesturesToAView(with: newView)
 
         newView.isUserInteractionEnabled = true
         newView.translatesAutoresizingMaskIntoConstraints = false
@@ -179,7 +179,7 @@ class ViewController: UIViewController
         newView.topAnchor.constraint(equalTo: self.centerView.topAnchor).isActive = true
 
 
-        adjustX()
+        self.adjustX()
     }
 
 
@@ -200,7 +200,7 @@ class ViewController: UIViewController
         self.viewsArray.remove(at: position)
         viewToDelete.removeFromSuperview()
 
-        adjustX()
+        self.adjustX()
 
 
     }
@@ -222,7 +222,7 @@ class ViewController: UIViewController
         if viewsArray.count > 0
         {
 
-            deactivateConstraints()
+            self.deactivateConstraints()
 
             var previousView: UIView = viewsArray[0]
 
